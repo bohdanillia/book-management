@@ -37,4 +37,24 @@ public class UserService {
         userDTO.setEmail(newUser.getEmail());
         return userDTO;
     }
+
+    public UserDTO login(String email, String password){
+        if(email == null || email.isBlank()){
+            throw new InvalidParameterException("Email cannot be empty");
+        }
+        if(password == null || password.length() < 6){
+            throw new InvalidParameterException("Password minimal length is 6");
+        }
+
+        UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+
+        if(!passwordEncoder.matches(password, user.getPassword())){
+            throw new InvalidParameterException("Password is incorrect");
+        }
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setEmail(user.getEmail());
+        return userDTO;
+    }
 }
