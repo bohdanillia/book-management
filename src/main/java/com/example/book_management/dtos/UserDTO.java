@@ -12,8 +12,6 @@ public class UserDTO {
     private String email;
     @NotBlank(message = "Password cannot be empty")
 
-    private String password;
-
         public int getId() {
             return id;
         }
@@ -21,7 +19,6 @@ public class UserDTO {
         public void setId(int id) {
             this.id = id;
         }
-
 
         public String getEmail() {
             return email;
