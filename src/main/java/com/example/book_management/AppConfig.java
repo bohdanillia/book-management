@@ -1,5 +1,7 @@
 package com.example.book_management;
 
+import com.example.book_management.repositories.BookRepository;
+import com.example.book_management.service.BookService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;

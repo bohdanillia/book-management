@@ -1,11 +1,15 @@
 package com.example.book_management.dtos;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class BookDTO {
+    Long id;
     @NotBlank(message = "Title cannot be empty")
     private String title;
     private String author;
@@ -15,7 +19,13 @@ public class BookDTO {
     @Size(max = 300)
     private String description;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
