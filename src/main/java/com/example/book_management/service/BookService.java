@@ -35,6 +35,7 @@ public class BookService {
 
 	public BookDTO updateBook(Long id, BookDTO updatedBook){
 		BookEntity bookToUpdate = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+		bookToUpdate.setId(updatedBook.getId());
 		bookToUpdate.setTitle(updatedBook.getTitle());
 		bookToUpdate.setAuthor(updatedBook.getAuthor());
 		bookToUpdate.setDescription(updatedBook.getDescription());
@@ -54,6 +55,7 @@ public class BookService {
 
 	public BookDTO toDTO(BookEntity bookEntity){
 		BookDTO bookDTO = new BookDTO();
+		bookDTO.setId(bookEntity.getId());
 		bookDTO.setTitle(bookEntity.getTitle());
 		bookDTO.setAuthor(bookEntity.getAuthor());
 		bookDTO.setYear(bookEntity.getYear());
