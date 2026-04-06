@@ -10,7 +10,6 @@ public class UserDTO {
     @NotBlank(message = "Email cannot be empty")
     @Email
     private String email;
-    @NotBlank(message = "Password cannot be empty")
 
         public int getId() {
             return id;
