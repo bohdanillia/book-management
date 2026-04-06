@@ -16,8 +16,9 @@ public class BookService {
 		this.bookRepository = bookRepository;
 	}
 
-	public BookDTO addBook(BookEntity book){
-		return toDTO(bookRepository.save(book));
+	public BookDTO addBook(BookDTO book){
+		BookEntity entity = toEntity(book);
+		return toDTO(bookRepository.save(entity));
 	}
 
 	public BookDTO getBookById(Long id){
@@ -32,8 +33,9 @@ public class BookService {
 				.toList();
 	}
 
-	public BookDTO updateBook(Long id, BookEntity updatedBook){
+	public BookDTO updateBook(Long id, BookDTO updatedBook){
 		BookEntity bookToUpdate = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+		bookToUpdate.setTitle(updatedBook.getTitle());
 		bookToUpdate.setAuthor(updatedBook.getAuthor());
 		bookToUpdate.setDescription(updatedBook.getDescription());
 		bookToUpdate.setYear(updatedBook.getYear());
