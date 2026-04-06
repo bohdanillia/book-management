@@ -20,7 +20,7 @@ public class AppConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/login").permitAll()
+                        .requestMatchers("/register", "/login", "/books/*").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
